@@ -1,0 +1,67 @@
+/* css에서 전역변수 선언과 같은 역할을 한다. */ 
+:root{--primaryColor: green; --errorColor: orange; }
+ 
+/* 박스모델(padding,content,border,margin)설정 */
+/* 일반적으로 컨텐츠크기 지정시 패딩과 테두리를 포함함*/
+html{box-sizing: border-box; }
+
+body{
+  display: flex; /* body태그 내부요소 전부를 인라인 속성으로 */
+  align-items: center; /* 세로정렬 */
+  justify-content: center; /* 가로정렬 */
+  min-height: 100vh; /* view height 최소높이 설정 */
+}
+/* flexbox는 부모 박스 요소에 적용해, 자식 박스의 방향과 크기를 결정하는 레이아웃 구성 방법 
+  부모 요소에 flex를 적용하면 자식 요소가 inline스타일처럼 변한다. Flexbox 속성은 속성마다 속성을 지정하는 위치가 다르며 부모 요소에 적용해야 하는 속성과 자식 요소에 적용해야 하는 속성으로 구분할 수 있다.
+  속성 적용 시 자식 요소들이 왼쪽부터 가로로 정렬되며 내용만큼 공간을 차지한다. https://wonkang.tistory.com/16
+*/
+
+/* 클래스네이밍 시, container는 하나 이상의 요소를 포괄하는 개체를 지칭하고 wrapper는 하나의 개체만을 포함하는 것으로 구분한다.
+https://inpa.tistory.com/entry/CSS-%F0%9F%92%8D-%EA%B7%B8%EB%A6%BC%EC%9E%90box-shadow-%EB%94%94%EC%9E%90%EC%9D%B8-%F0%9F%96%8C%EF%B8%8F-%EB%AA%A8%EC%9D%8C */
+#wrapper{
+  width: 420px; 
+  box-shadow: 0px 4px 14px 14px rgba(0,0,0,0.2); /* 수평,수직,그림자블러값,그림자퍼지기,그림자색깔 지정 */ 
+}
+
+h2{text-align: center; margin-top: 20px; }
+
+.inputGroup{padding: 8px 12px;  }
+
+/* 인라인요소는 사이즈지정이 불가능하므로 inline-block으로 바꿔서 지정하면 된다. */
+.inputGroup label{display: block; /* 인라인에서 블록라인으로 */ padding: 8px 12px; }
+
+.inputGroup input{display: block; width: 93%; padding: 12px; border: 2px solid #e2e2e2; font-size: 16px; }
+
+/* input에 포커스가 갔을 때 주는 효과 : outline:none 안하면 네모블록라인 생기는거 안예쁨 */
+.inputGroup input:focus{outline: none; border-color: #777;}
+
+
+
+/* 자바스크립트 css선택자 설정 */
+.inputGroup.valid input{
+  border-color:var(--primaryColor); 
+}
+.inputGroup.invalid input{
+  border-color:var(--errorColor); 
+  visibility: visible;
+}
+.inputGroup .helperText{
+  display: block;
+  padding-top: 8px;
+}
+.inputGroup.valid .helperText{
+  visibility: hidden;
+}
+.inputGroup.invalid .helperText{
+  color:var(--errorColor);
+}
+#wrapper button{
+  display: block;
+  width: 85%;
+  margin: 0 auto;
+  height: 50px; 
+  font-size: 18px;
+  background-color:var(--primaryColor);
+  border: 2px solid var(--primaryColor); 
+  cursor: pointer;
+}
