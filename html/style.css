@@ -1,5 +1,5 @@
 /* css에서 전역변수 선언과 같은 역할을 한다. */ 
-:root{primaryColor: green; errorColor: orange; }
+:root{--primaryColor: green; --errorColor: orange; }
  
 /* 박스모델(padding,content,border,margin)설정 */
 /* 일반적으로 컨텐츠크기 지정시 패딩과 테두리를 포함함*/
@@ -20,7 +20,7 @@ body{
 https://inpa.tistory.com/entry/CSS-%F0%9F%92%8D-%EA%B7%B8%EB%A6%BC%EC%9E%90box-shadow-%EB%94%94%EC%9E%90%EC%9D%B8-%F0%9F%96%8C%EF%B8%8F-%EB%AA%A8%EC%9D%8C */
 #wrapper{
   width: 420px; 
-  box-shadow: 0px 4px 14px 14px rgba(0,0,0,0,2); /* 수평,수직,그림자블러값,그림자퍼지기,그림자색깔 지정 */ 
+  box-shadow: 0px 4px 14px 14px rgba(0,0,0,0.2); /* 수평,수직,그림자블러값,그림자퍼지기,그림자색깔 지정 */ 
 }
 
 h2{text-align: center; margin-top: 20px; }
@@ -30,7 +30,7 @@ h2{text-align: center; margin-top: 20px; }
 /* 인라인요소는 사이즈지정이 불가능하므로 inline-block으로 바꿔서 지정하면 된다. */
 .inputGroup label{display: block; /* 인라인에서 블록라인으로 */ padding: 8px 12px; }
 
-.inputGroup input{display: block; width: 93px; padding: 12px; border: 2px solid #e2e2e2; font-size: 16px; }
+.inputGroup input{display: block; width: 93%; padding: 12px; border: 2px solid #e2e2e2; font-size: 16px; }
 
 /* input에 포커스가 갔을 때 주는 효과 : outline:none 안하면 네모블록라인 생기는거 안예쁨 */
 .inputGroup input:focus{outline: none; border-color: #777;}
@@ -39,10 +39,10 @@ h2{text-align: center; margin-top: 20px; }
 
 /* 자바스크립트 css선택자 설정 */
 .inputGroup.valid input{
-  border-color.var(primaryColor); 
+  border-color:var(--primaryColor); 
 }
 .inputGroup.invalid input{
-  border-color.var(errorColor); 
+  border-color:var(--errorColor); 
   visibility: visible;
 }
 .inputGroup .helperText{
@@ -53,7 +53,7 @@ h2{text-align: center; margin-top: 20px; }
   visibility: hidden;
 }
 .inputGroup.invalid .helperText{
-  color.var(errorColor);
+  color:var(--errorColor);
 }
 #wrapper button{
   display: block;
@@ -61,7 +61,7 @@ h2{text-align: center; margin-top: 20px; }
   margin: 0 auto;
   height: 50px; 
   font-size: 18px;
-  background-color.var(primaryColor);
-  border: 2px solid var(primaryColor); 
-  cusor: pointer;
+  background-color:var(--primaryColor);
+  border: 2px solid var(--primaryColor); 
+  cursor: pointer;
 }
