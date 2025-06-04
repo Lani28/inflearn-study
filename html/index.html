@@ -6,6 +6,8 @@
     <!-- 반응형 데이터 정보, 장치크기별 가로/배율 1배 기본 -->
     <title>회원등록</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script> 
+    <!-- defer을 써서 DOM 완성 후에 작동시킨다. 아니면 body 맨 밑에 연결함. -->
 </head>
 <body>
     <div id="wrapper" class="wrapper">
@@ -34,8 +36,8 @@
             </div>
             <div class="inputGroup">
                 <label for="userPhone">휴대폰번호</label>
-                <input type="tel" id="userPhone" class="userPhoneInput">
-                <span class="helperText">예:010-1234-5678</span>
+                <input type="tel" id="userPhone" class="userPhoneInput" placeholder="(- 제외) 01012345678">
+                <span class="helperText">알림</span>
             </div><br>
             <button type="submit" id="submitButton" class="button">등록완료</button>
         </form>

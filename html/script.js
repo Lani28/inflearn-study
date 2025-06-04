@@ -1,6 +1,6 @@
 const wrapperBox = document.getElementById("wrapper");  //단일 선택자
 const inputFieldGroup = document.getElementsByClassName("inputGroup");  //클래스 전체 선택자
-const allInputs = document.querySelector("input");  //css선택자
+const allInputs = document.querySelectorAll("input");  //css선택자
 const userNickname = document.getElementById("nickname");
 const userEmail = document.getElementById("userEmail");
 const userPassword = document.getElementById("userPassword"); 
@@ -11,8 +11,6 @@ const registrationForm = document.getElementById("registrationForm");
 //알림창 사용 
 const updateHelperText = (input,message,isValid)=> {
     const inputGroup = input.parentElement; //부모선택 하위
-    console.log(userEmail.parentElement);
-
     const helperText = inputGroup.getElementsByClassName("helperText")[0];  //알림창
 
     if(isValid == true){
@@ -24,7 +22,7 @@ const updateHelperText = (input,message,isValid)=> {
     if(isValid == false){
         inputGroup.classList.remove("valid"); 
         inputGroup.classList.add("invalid"); 
-        helperText.style.visiblility = "visible";
+        helperText.style.visibility = "visible";
         helperText.innerText = message;
     }
 };
@@ -70,7 +68,7 @@ const checkPasswordStrength = (password)=> {
         updateHelperText(password,"적합한 비밀번호",true);
         return true;
     }else{
-        updateHelperText(password,"부적합한 비밀번호, 비밀번호는 8자 이상 대소문자 포함입니다.",false);
+        updateHelperText(password,"비밀번호는 8자 이상 문자,숫자,특수문자 포함입니다.",false);
         return false;
     }
 }
@@ -110,12 +108,14 @@ const validateForm = ()=> {
 }
 
 //버튼을 눌러서 제출 시 발생하는 event(기능)가 실행할 때, 새로고침을 막는 것. 콘솔의 데이터가 날아가기 때문에 유효성 검사가 불가능 해지므로. 
-registrationForm.addEventListener('submit',(event)=>{
-    event.preventDefault();
+registrationForm.addEventListener("submit",(event)=>{
+    event.preventDefault(); //새로고침 정지
+
     if(validateForm()==true){
-        console.log("유효함");
+        alert("가입완료");
+        registrationForm.reset();   //입력값 클리어 시켜줌
     }else{
-        console.log("에러실패");
+        alert("에러실패");
     }
     console.log(event);
 });
@@ -130,13 +130,13 @@ document.querySelectorAll("input").forEach(input => {
             case 'userEmail':
                 validEmailFormat(input);
                 break;    
-            case 'userpassword':
+            case 'userPassword':
                 checkPasswordStrength(input);
                 break;    
             case 'confirmPw':
-                validatePasswordMatch(userpassword,confirmPw);
+                validatePasswordMatch(userPassword,confirmPw);
                 break;    
-            case 'phoneNumber':
+            case 'userPhone':
                 validatePhoneNumber(input);
                 break;    
         }
