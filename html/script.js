@@ -1,20 +1,21 @@
-const wrapperBox = document.getElementById("wrapper");  //단일 선택자
-const inputFieldGroup = document.getElementsByClassName("inputGroup");  //클래스 전체 선택자
-const allInputs = document.querySelectorAll("input");  //css선택자
-const userNickname = document.getElementById("nickname");
-const userEmail = document.getElementById("userEmail");
-const userPassword = document.getElementById("userPassword"); 
-const confirmPw = document.getElementById("confirmPw"); 
-const userPhone = document.getElementById("userPhone");
-const registrationForm = document.getElementById("registrationForm"); 
+const wrapperBox = document.getElementById("wrapper");  //단일 선택자 : form전체를 묶는 div
+const inputFieldGroup = document.getElementsByClassName("inputGroup");  //전체 input태그 선택
+const allInputs = document.querySelectorAll("input");  //css선택자 : 각 div의 첫번째 input들
+const userNickname = document.getElementById("nickname");   //사용자이름
+const userEmail = document.getElementById("userEmail");     //사용자메일
+const userPassword = document.getElementById("userPassword"); //사용자비밀번호
+const confirmPw = document.getElementById("confirmPw");     //비밀번호확인
+const userPhone = document.getElementById("userPhone");     //사용자연락처
+const registrationForm = document.getElementById("registrationForm");  //폼제출
 
-//알림창 사용 
+//알림창 기능 구현 : 도움말 나타나게
 const updateHelperText = (input,message,isValid)=> {
-    const inputGroup = input.parentElement; //부모선택 하위
-    const helperText = inputGroup.getElementsByClassName("helperText")[0];  //알림창
+    const inputGroup = input.parentElement; //이벤트가 발생할 input의 부모 div선택.
+    const helperText = inputGroup.getElementsByClassName("helperText")[0];  //알림창 선택
+    //const helperText = inputGroup.querySelector(".helperText");  //더 빠른 똑같은 코드
 
     if(isValid == true){
-        inputGroup.classList.remove("invalid"); 
+        inputGroup.classList.remove("invalid"); //div블록 클래스요소중에서 invalid css삭제
         inputGroup.classList.add("valid"); 
         helperText.style.visibility = "hidden";
     }
@@ -27,8 +28,9 @@ const updateHelperText = (input,message,isValid)=> {
     }
 };
 
-//알림이 사용될 조건 
-//입력값이 공백인지 체크
+// 알림이 사용될 조건
+
+//입력값 공백 체크
 const checkEmptyInput = (input) => {
     //띄어쓰기 제거
     if(input.value.trim() === ''){
@@ -110,12 +112,10 @@ const validateForm = ()=> {
 //버튼을 눌러서 제출 시 발생하는 event(기능)가 실행할 때, 새로고침을 막는 것. 콘솔의 데이터가 날아가기 때문에 유효성 검사가 불가능 해지므로. 
 registrationForm.addEventListener("submit",(event)=>{
     event.preventDefault(); //새로고침 정지
-
     if(validateForm()==true){
-        alert("가입완료");
-        registrationForm.reset();   //입력값 클리어 시켜줌
+        alert.log("가입완료");
     }else{
-        alert("에러실패");
+        alert.log("에러실패");
     }
     console.log(event);
 });
