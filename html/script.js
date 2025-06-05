@@ -113,9 +113,9 @@ const validateForm = ()=> {
 registrationForm.addEventListener("submit",(event)=>{
     event.preventDefault(); //새로고침 정지
     if(validateForm()==true){
-        alert.log("가입완료");
+        alert("가입완료");
     }else{
-        alert.log("에러실패");
+        alert("에러실패");
     }
     console.log(event);
 });
