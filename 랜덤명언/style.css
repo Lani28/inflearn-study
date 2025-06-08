@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&display=swap');
+
+*{
+    font-family: "Asta Sans", sans-serif;
+    box-sizing: border-box;  
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 18px;
+    background: #f5f5f5;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /*  */
+    min-height: 100vh;
+    padding: 20px;
+}
+
+h1{
+    margin-bottom: 20px;
+}
+
+button {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: greenyellow;
+    cursor: pointer;
+    transition: background-color 0.3 ease;
+}
+
+button:active{
+    background-color: #00796b;
+}
+
+button:hover{
+    transform: scale(0.95);
+}

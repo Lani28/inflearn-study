@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    /* 요소의 너비와 높이를 계산하는 방식을 바꾸는 속성 : 지정한 width안에 패딩과 보더가 포함*/
+}
+
+body{
+    align-items: center;
+    justify-content: center;  
+    min-height: 100vh;
+    display: flex;
+    /* html요소들을 정렬하기 쉽게 만들어주는 속성 */
+    background-color: #f0f8ff;
+    animation: fadein 1.5s;
+}
+
+@keyframes fadein{
+    from{
+        opacity: 0%;
+    }to{
+        opacity: 100%;
+    }
+}
+
+h1{
+    text-align: center;
+}
+
+.container{
+    display: block;
+}
+
+.calculator{
+    display: inline-block;
+}
+
+input{
+    /* 입력방향을 왼>오 */
+    direction: ltr;
+    background-color: #ffffff;
+    color: #2c3e50;
+    width: 80vw;
+    font-size: 3rem;
+    border: 2px solid #bdc3c7;
+    border-radius: 0.3rem;
+}
+
+table{
+    margin: 0 auto;
+    /* display속성이 block인 태그요소들을 가운데로 */
+}
+
+button{
+    border: none;
+    width: 19.5vw;
+    height: 10vw;
+    font-size: 2em;
+    border-radius: 0.3rem;
+    transition: box-shadow 0.3s ease ,transform 0.2s ease ;
+    /* transition: [속성] [지속 시간] [타이밍 함수]; animation속성 보다 간단한 사용시 */
+    /* 그림자효과 0.3초간 부드럽게, 변형을 0.2초간 부드럽게*/
+}
+
+/* 버튼이 눌릴때 애니매이션 효과 지정 */
+button:active{
+    /* scale()은 요소의 크기를 n배로 조절하는 속성, 작을수록 변화폭이 크다 */
+    transform: scale(0.8);
+    box-shadow: 3px 2px 22px 1px rgba(19,145,137,0.9);
+    /* box-shadow: x-offset y-offset blur spread color 그림자색상 불투명도 0.9*/
+}
+
+/* 버튼 위에 포인터 있을 때 효과 지정 */
+button:hover{
+    box-shadow: 0px 0px 10px 0px rgba(19,145,137,0.9);
+}
