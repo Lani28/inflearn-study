@@ -22,7 +22,7 @@ function hideLoadingSpinner(){
 
 //open api호출 > 온라인상의 키값데이터모음에 호출을 하면 백엔드에서 프론트로 데이터를 넘겨받을 수 있다. 
 async function fetchKoreaQuotes() {
-    showLoadingSpinner();
+    showLoadingSpinner();   //로딩중
     const apiUrl = "https://korean-advice-open-api.vercel.app/api/advice";
     try{
         //get으로 요청해서 명언을 랜덤으로 가지고 옴
@@ -38,19 +38,18 @@ async function fetchKoreaQuotes() {
         console.log("에러발생");
         quote.innerText = "명언을 불러올 수 없습니다.";
     }
-    hideLoadingSpinner();
+    hideLoadingSpinner();   //로딩숨김
 }
 
 //즐겨찾기 추가
 function saveFavoriteQuote(){
-    const storedQuote = localStorage.getItem("quote");
-    //로컬스토리지엔 명언 존재, 즐겨찾기명언에 없을 때
+    const storedQuote = localStorage.getItem("quote");  //로컬스토리지에서 명언 가져옴
+    //명언이 있고, 즐겨찾기명언에 없을 때
     if (storedQuote !== null && !isQuoteAlreadyInList(storedQuote)){
         const listItem = document.createElement("li");
-        //li태그에 로컬스토리지 명언을 텍스트로 저장
+        //li태그로 로컬스토리지 명언을 텍스트로 저장
         listItem.innerText=storedQuote;
         favoriteQuoteList.appendChild(listItem);
-        isQuoteSaved = true; //최종저장 두개다
     }else{
         alert("이 명언은 이미 즐겨찾기에 저장되었습니다.")
     }
@@ -58,11 +57,12 @@ function saveFavoriteQuote(){
 
 //즐겨찾기에 없는 것만 추가
 function isQuoteAlreadyInList(quote){
-    const listItem = favoriteQuoteList.getElementsByTagName("li");
+    const listItem = favoriteQuoteList.getElementsByTagName("li"); 
+    // 즐겨찾기 리스트의 모든 <li> 태그들
 
     for (item of listItem){
         if(item.innerText === quote){
-            return true;
+            return true;    //이미있음
         }
     }
     return false;
